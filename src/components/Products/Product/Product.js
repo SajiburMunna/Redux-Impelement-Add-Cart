@@ -1,18 +1,22 @@
 import React from "react";
 import "./Product.css";
-const Product = () => {
+const Product = ({ productData }) => {
   return (
-    <div class="row">
-      <div class="column">
-        <div class="card">
-          <img
-            style={{ width: "200px" }}
-            src=" https://i.pinimg.com/736x/6a/32/6c/6a326c3a0b22ad83854ed49e74cf3327.jpg"
-            alt="Avatar"
-          ></img>
-          <h3>Card 1</h3>
-          <p>Some text</p>
-          <p>Some text</p>
+    <div>
+      <div class="row">
+        <div class="column">
+          <div class="card" style={{ marginBottom: "20px" }}>
+            <img
+              style={{ width: "200px" }}
+              src={productData.image}
+              alt="Avatar"
+            ></img>
+            <h3>{productData.title}</h3>
+            <p>Price : {productData.price}</p>
+
+            <button>Add Cart </button>
+            <button>View Cart</button>
+          </div>
         </div>
       </div>
     </div>

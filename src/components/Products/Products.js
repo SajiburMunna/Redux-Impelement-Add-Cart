@@ -1,12 +1,23 @@
 import React from "react";
 import Product from "./Product/Product";
-
-const products = () => {
+import { connect } from "react-redux";
+import "./Product/Product.css";
+const products = ({ products }) => {
   return (
-    <div>
-      <Product></Product>
+    <div style={{ textAlign: "center" }}>
+      <h1>FooD CarT</h1>
+      <div>
+        {products.map((prd) => (
+          <Product key={prd.id} productData={prd}></Product>
+        ))}
+      </div>
     </div>
   );
 };
 
-export default products;
+const mapStateProps = (state) => {
+  return {
+    products: state.shop.products,
+  };
+};
+export default connect(mapStateProps)(products);
