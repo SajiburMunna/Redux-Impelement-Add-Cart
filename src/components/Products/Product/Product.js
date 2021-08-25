@@ -1,6 +1,10 @@
 import React from "react";
 import "./Product.css";
-const Product = ({ productData }) => {
+
+import { connect } from "react-redux";
+
+import { addToCart } from "./../../../redux/Shopping/shopping-actions";
+const Product = ({ productData, addToCart }) => {
   return (
     <div>
       <div class="row">
@@ -14,7 +18,7 @@ const Product = ({ productData }) => {
             <h3>{productData.title}</h3>
             <p>Price : {productData.price}</p>
 
-            <button>Add Cart </button>
+            <button onClick={() => addToCart(productData.id)}>Add Cart </button>
             <button>View Cart</button>
           </div>
         </div>
@@ -23,4 +27,10 @@ const Product = ({ productData }) => {
   );
 };
 
-export default Product;
+const mapToDispatch = (dispatch) => {
+  return {
+    addToCart: (id) => dispatch(addToCart(id)),
+  };
+};
+
+export default connect(null, mapToDispatch)(Product);
